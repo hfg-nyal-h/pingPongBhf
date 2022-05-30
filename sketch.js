@@ -8,9 +8,13 @@ ml5 Example
 PoseNet example using p5.js
 === */
 
+//
+
 let video;
 let poseNet;
 let poses = [];
+
+//let mqtt = import ".mqtt"
 
 function setup() {
   createCanvas(640, 480);
