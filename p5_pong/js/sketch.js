@@ -7,13 +7,13 @@ function preload() {
 
 function setup() {
   
-	alert('-> Use keys A,Z and K,M to move the paddles\n'+
-		  '-> Press Spacebar to start each round, and R to reset the game\n'+
-		  '-> Hit the ball and make your opponent miss to score!\n\n'+
-	    'Good Luck!');
+	// alert('-> Use keys A,Z and K,M to move the paddles\n'+
+	// 	  '-> Press Spacebar to start each round, and R to reset the game\n'+
+	// 	  '-> Hit the ball and make your opponent miss to score!\n\n'+
+	//     'Good Luck!');
 
 	createCanvas(400, 700)
-	ball = new Ball(width/2, height/2, 10, 10);
+	ball = new Ball(height/2, width/2, 10, 10);
 //TODO akteull ist das Paddle p2 noch nicht richtig im bild reim Rendern 
 	p1 = new Paddle(width/2 - 50, 20, 100, 10);
 	p2 = new Paddle(width/2 - 50,height - 50 , 100, 10);
