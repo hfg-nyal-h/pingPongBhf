@@ -16,7 +16,26 @@ let poses = [];
 let pose = [];
 let maximumPeople = 1; // max number of people to track
 
-//let mqtt = import ".mqtt"
+const topic = "/pingPongBahnhof/"
+const mqttClient = mqtt.connect("http://193.196.159.141");
+
+
+mqttClient.on("connect", function () {
+    mqttClient.subscribe(topic, function (err) {
+        if (err) {
+            throw (err);
+        }
+        else {
+            mqttClient.publish(topic + "logs/",  + " connected " )
+        }
+    })
+    console.log("connectet")
+})
+mqttClient.on("message", async (topic, message) => {
+    console.log(message)
+  
+});
+
 
 function setup() {
   createCanvas(640, 480);
