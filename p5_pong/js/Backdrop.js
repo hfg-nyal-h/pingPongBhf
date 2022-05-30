@@ -2,6 +2,7 @@ let textOffsetX = 50;
 let textOffsetY = 10;
 
 function backdrop() {
+
     stroke(80)
     strokeWeight(8);
 

@@ -8,8 +8,8 @@ class Paddle {
     }
 
     move(amt) {
-        this.pos.x += amt;
-        this.pos.x = constrain(this.pos.x, 0, width - this.w);
+        //TODO smooth this value
+        this.pos.x = amt;
     }
 
     show() {
