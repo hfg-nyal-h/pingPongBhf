@@ -5,6 +5,7 @@ let video;
 let poseNet;
 let poses = [];
 let avarage;
+//TODO lastavare without a funciton
 let lastavarage ;
 function preload() {
     retroFont = loadFont('ARCADECLASSIC.TTF');
