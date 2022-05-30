@@ -22,7 +22,9 @@ function setup() {
 
 
 function draw() {
-    background(52);
+    translate(width, 0);
+    scale(-1, 1);
+    image(video, 0, 0, width, height);   
     backdrop();
     movePaddles();
 	
@@ -61,12 +63,12 @@ function movePaddles() {
     }
 
     
-    if (avarage > 250) {
+    if (avarage < 250) {
         p2.move(-5);
     }
 
     
-    if (avarage < 250) {
+    if (avarage > 250) {
         p2.move(5);
     }
 	console.log(avarage)
