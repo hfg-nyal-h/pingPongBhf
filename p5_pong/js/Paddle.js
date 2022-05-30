@@ -9,7 +9,7 @@ class Paddle {
 
     move(amt) {
         this.pos.x += amt;
-        this.pos.x = constrain(this.pos.x, 10, height - 10 - this.h);
+        this.pos.x = constrain(this.pos.x, 0, width - this.w);
     }
 
     show() {
@@ -17,6 +17,6 @@ class Paddle {
         fill(255);
         rect(this.pos.x, this.pos.y, this.w, this.h);
     }
-        
+
 
 }
