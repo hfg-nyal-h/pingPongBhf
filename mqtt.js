@@ -1,7 +1,7 @@
 
 //require('dotenv').config()
 //mqtt
-//const mqtt = require('mqtt')
+const mqtt = require('mqtt')
 const topic = "/pingPongBahnhof/"
 const mqttClient = mqtt.connect("http://193.196.159.141");
 

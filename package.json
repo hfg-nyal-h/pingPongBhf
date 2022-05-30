@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "mqtt": "^4.3.7"
+  },
+  "name": "pingpongbhf",
+  "description": "",
+  "version": "1.0.0",
+  "main": "sketch.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hfg-nyal-h/pingPongBhf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hfg-nyal-h/pingPongBhf/issues"
+  },
+  "homepage": "https://github.com/hfg-nyal-h/pingPongBhf#readme"
+}
