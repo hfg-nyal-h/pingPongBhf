@@ -13,6 +13,8 @@ PoseNet example using p5.js
 let video;
 let poseNet;
 let poses = [];
+let pose = [];
+let maximumPeople = 1; // max number of people to track
 
 //let mqtt = import ".mqtt"
 
@@ -42,6 +44,7 @@ function draw() {
   // We can call both functions to draw all keypoints and the skeletons
   drawKeypoints();
   drawSkeleton();
+  gotPoses();
 }
 
 // A function to draw ellipses over the detected keypoints
@@ -74,6 +77,27 @@ function drawSkeleton() {
       const partB = skeleton[j][1];
       stroke(255, 0, 0);
       line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
+     // console.log(poses);
     }
   }
 }
+
+function gotPoses(maximumPeople) {
+
+ // console.log(poses)
+//if (poses.length == maximumPeople ) {
+if(poses.length > 0 ) {
+  pose = poses[0].pose;
+  shoulderPose = [];
+  shoulderPose.shoulderLeft = pose.keypoints[5].position.x;
+  shoulderPose.confidenceLeft = pose.keypoints[5].score;
+  shoulderPose.shoulderRight = pose.keypoints[6].position.x;
+  shoulderPose.confidenceRight = pose.keypoints[6].score;
+
+  console.log(shoulderPose);
+  
+} else if (poses.length > maximumPeople) {
+  console.log("to many People")
+}
+} 
+
