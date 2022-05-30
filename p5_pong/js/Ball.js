@@ -10,22 +10,22 @@ class Ball {
     
     resetball() {
         this.pos = this.spawn.copy();
-        let angle = random(-PI/4, PI/4)
+        let angle = random(-20, -10)
         this.vel = p5.Vector.fromAngle(angle, this.speed);
         if (random(1) > 0.5) this.vel.x *= -1;
     }
 
     outOfBounds() {
-    
+    //TODO die grenzen verschieben 
         // If the ball is out of the screen,
         // return the side, otherwise return false
         
-        if (this.pos.x > width + this.r)  {
+        if (this.pos.y > height + this.r)  {
             this.resetball();
             return 'right';
         }
         
-        if (this.pos.x < -this.r) {
+        if (this.pos.y < -this.r) {
             this.resetball();
             return 'left';
         }
@@ -74,9 +74,9 @@ class Ball {
         this.pos.add(this.vel);
         
         // bounce off top and bottom walls
-        if (this.pos.y + this.r >= height || this.pos.y - this.r <= 0) {
-            this.pos.y = constrain(this.pos.y, this.r, height - this.r);
-            this.vel.y *= -1;
+        if (this.pos.x + this.r >= width || this.pos.x - this.r <= 0) {
+            this.pos.x = constrain(this.pos.x, this.r, width - this.r);
+            this.vel.x *= -1;
         }
         
     }
