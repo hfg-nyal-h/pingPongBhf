@@ -57,7 +57,7 @@ class Ball {
                     
                     // basically halve that angle so it points more to the center
                     let a = this.vel.heading();
-                    if (a > -PI/2 && a < PI/2) {
+                    if (a > -a && a < a) {
                         this.vel = p5.Vector.fromAngle(a/2, 10);
                     } else {
                         this.vel.rotate(PI);
