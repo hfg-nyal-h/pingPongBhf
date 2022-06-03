@@ -30,12 +30,13 @@ let creds = {
   password: 'public'
 }
 // topic to subscribe to when you connect:
-let topic = 'notes';
+let topic = 'pingPongBahnhof/shoulderPose/master';
 
 // a pushbutton to send messages
-let sendButton;
+//let sendButton;
 let localDiv;
 let remoteDiv;
+
 
 // intensity of the circle in the middle
 let intensity = 255;
@@ -57,7 +58,6 @@ function setup() {
 
   ///////
 
-  createCanvas(400, 400);
   // Create an MQTT client:
   client = new Paho.MQTT.Client(broker.hostname, Number(broker.port), creds.clientID);
   // set callback handlers for the client:
@@ -70,10 +70,10 @@ function setup() {
           useSSL: true                // use SSL
       }
   );
-  // create the send button:
-  sendButton = createButton('send a message');
-  sendButton.position(20, 20);
-  sendButton.mousePressed(sendMqttMessage);
+   // create the send button:
+  //sendButton = createButton('send a message');
+  //sendButton.position(20, 20);
+  //sendButton.mousePressed(sendMqttMessage);
   // create a div for local messages:
   localDiv = createDiv('local messages will go here');
   localDiv.position(20, 50);
@@ -81,7 +81,7 @@ function setup() {
   // create a div for the response:
   remoteDiv = createDiv('waiting for messages');
   remoteDiv.position(20, 80);
-  remoteDiv.style('color', '#fff');
+  remoteDiv.style('color', '#fff'); 
 }
 
 function modelReady() {
@@ -95,15 +95,6 @@ function draw() {
   drawKeypoints();
   drawSkeleton();
   gotPoses();
-
-  background(50);
-  // draw a circle whose brightness changes when a message is received:
-  fill(intensity);
-  circle(width/2, height/2, width/2);
-// subtract one from the brightness of the circle:
-  if (intensity > 0) {
-      intensity--;
-  }
 }
 
 // A function to draw ellipses over the detected keypoints
