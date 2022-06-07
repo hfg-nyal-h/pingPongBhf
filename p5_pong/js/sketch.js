@@ -118,7 +118,7 @@ function posenet5() {
                     poses[0].pose.keypoints[6].position.x) /
                 2;
             lastAverage = Average;
-            mqttMsg = { average: Average, clientID: 1213 };
+            mqttMsg = { average: Average, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
             sendMqttMessage(mqttMsg);
         }
     });
