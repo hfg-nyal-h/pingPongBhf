@@ -5,7 +5,10 @@ let poseNet;
 let poses = [];
 let Average;
 //TODO lastavare without a funciton
+//TODO Winner
+let currentWinner;
 let lastAverage;
+
 
 function preload() {
     retroFont = loadFont("ARCADECLASSIC.TTF");
@@ -91,6 +94,37 @@ function keyTyped() {
 
     // for safety
     return false;
+}
+
+function gameStatus() {
+    if (p1.score == 5) {
+        //Player 1 Wins
+        currentWinner = p1;
+        calculateScoredPoints(currentWinner)
+
+    } else if (p2.score == 5) {
+        //Player 2 Wins
+    }
+}
+
+function calculateScoredPoints(currentWinner){
+// kalkulieren des Scores
+// Anhand tor unterschied oder Zeit
+//bei 5 schnellen Toren weniger Punkte als bei einem kranken Match.
+let score;
+insertWinnerToDatabase(score);
+}
+
+function insertWinnerToDatabase(score) {
+    // paste Current Winner to Database
+    //hier irgendwie die database.js einbinden
+}
+
+function showRanking() {
+//get ranking status from database
+
+//hier irgendwie die database.js einbinden
+
 }
 
 // Copyright (c) 2018 ml5
