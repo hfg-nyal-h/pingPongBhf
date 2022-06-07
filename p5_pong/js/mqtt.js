@@ -24,7 +24,7 @@ let opponentTopic = "pingPongBahnhof/paddlePosition/GameOne/PlayerSlave";
 // called when the client connects
 function onConnect() {
     console.log('client is connected');
-    client.subscribe(topic);
+    client.subscribe(opponentTopic);
 }
 
 // called when the client loses its connection
