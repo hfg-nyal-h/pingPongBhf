@@ -1,5 +1,5 @@
 //Dieser Client wird den Master Client übernehmen
-let clientID = "p5ClientMaster";
+let clientID = "p5ClientSlave";
 
 
 // MQTT COMMUNICATION
@@ -17,14 +17,14 @@ let creds = {
     password: "public",
 };
 // topic to subscribe to when you connect:
-let topic = "pingPongBahnhof/paddlePosition/GameOne/PlayerMaster";
-let opponentTopic = "pingPongBahnhof/paddlePosition/GameOne/PlayerSlave";
+let topic = "pingPongBahnhof/paddlePosition/GameOne/PlayerSlave";
+let opponentTopic = "pingPongBahnhof/paddlePosition/GameOne/PlayerMaster";
 //Das andere Thema wird: "pingPongBahnhof/paddlePosition/GameOne/PlayerSlave"
 
 // called when the client connects
 function onConnect() {
-    console.log('client is connected');
-    client.subscribe(topic);
+    console.log('clientSlave is connected');
+    client.subscribe(opponentTopic);
 }
 
 // called when the client loses its connection
@@ -40,6 +40,8 @@ function onMessageArrived(message) {
     //Hier werden Slave koordinaten verarbeitet.
     let values = JSON.parse(message.payloadString);
     p1.move(values.average)
+    ball.x = values.ballPositionX;
+    ball.y = values.ballPositionY;
 }
 
 // called when you want to send a message:

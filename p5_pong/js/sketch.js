@@ -78,16 +78,16 @@ function movePaddles() {
 }
 
 function keyTyped() {
-    if (key == " ") {
-        go = true;
-    }
+    // if (key == " ") {
+    //     go = true;
+    // }
 
-    if (key == "r") {
-        p1.score = 0;
-        p2.score = 0;
-        ball.resetball();
-        go = false;
-    }
+    // if (key == "r") {
+    //     p1.score = 0;
+    //     p2.score = 0;
+    //     ball.resetball();
+    //     go = false;
+    // }
 
     // for safety
     return false;
