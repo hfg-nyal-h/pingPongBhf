@@ -1,0 +1,16 @@
+{
+  "name": "p5_startertemplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "live-server": "^1.2.1",
+    "mqtt": "^4.3.7",
+    "nodemon": "^2.0.16",
+    "p5": "^1.4.0"
+  },
+  "scripts": {
+    "start": "live-server ."
+  }
+}
