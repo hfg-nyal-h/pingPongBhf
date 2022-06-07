@@ -106,11 +106,11 @@ function keyTyped() {
 }
 
 function gameStatus() {
-  if (p1.score == 5 || clicks == 5) {
+  if (p1.score == 1 || clicks == 5) {
       //Player 1 Wins
     currentWinner = p1;
     calculateScoredPoints(currentWinner);
-    console.log("5clicks");
+    console.log("winner");
     return;
   } else if (p2.score == 5) {
     //Player 2 Wins
@@ -129,10 +129,10 @@ function calculateScoredPoints(currentWinner) {
 function insertWinnerToDatabase(score) {
   // paste Current Winner to Database
   //hier irgendwie die database.js einbinden
-addTodo(score);
+let todos = score;
+addTodo(todos);
 showTodos();
 }
-
 
 function showRanking() {
   //get ranking status from database

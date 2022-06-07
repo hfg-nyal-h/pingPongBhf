@@ -23,6 +23,10 @@
         completed: false
       };
       db.post(todo, function(err, result) {
+        if(err) {
+          console.log(err);
+          console.log('error');
+        }
         if (!err) {
           console.log('Successfully posted a todo!');
         }

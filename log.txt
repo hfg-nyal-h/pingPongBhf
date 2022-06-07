@@ -1,0 +1,70 @@
+[Tue, 07 Jun 2022 19:22:45 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:5984/
+[Tue, 07 Jun 2022 19:22:45 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:5984/_utils for the Fauxton UI.
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils 301
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/ 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/css/styles-a9623008fc27e79da2388441deeacfab.css 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/js/bundle-34997e32896293a1fa5d71f79eb1b4f7.js 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_session 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_session 304
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET / 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/pouchdb-site.png 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/fonts/fauxtonicon5.woff 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1654629771268 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?startkey=%22%22&endkey=%22%E9%A6%99%22&limit=30&_=1654629771269 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1654629771270 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1654629771271 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/fonts/fontawesome-webfont.woff 200
+[Tue, 07 Jun 2022 19:22:51 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/pouchdb-favicon.png 200
+[Tue, 07 Jun 2022 19:23:23 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_active_tasks 200
+[Tue, 07 Jun 2022 19:23:24 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/couchdb-logo.png 200
+[Tue, 07 Jun 2022 19:23:24 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/github.png 200
+[Tue, 07 Jun 2022 19:23:24 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/asf-feather-logo.png 200
+[Tue, 07 Jun 2022 19:23:24 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/twitter.png 200
+[Tue, 07 Jun 2022 19:23:24 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/linkedin.png 200
+[Tue, 07 Jun 2022 19:23:24 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_utils/dashboard.assets/img/googleplus.png 200
+[Tue, 07 Jun 2022 19:23:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 200
+[Tue, 07 Jun 2022 19:23:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 304
+[Tue, 07 Jun 2022 19:23:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_active_tasks 304
+[Tue, 07 Jun 2022 19:23:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 304
+[Tue, 07 Jun 2022 19:23:27 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_node/node1@127.0.0.1/_config 200
+[Tue, 07 Jun 2022 19:23:28 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_active_tasks 304
+[Tue, 07 Jun 2022 19:23:31 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1654629771272 200
+[Tue, 07 Jun 2022 19:23:31 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1654629771273 200
+[Tue, 07 Jun 2022 19:23:31 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1654629771274 200
+[Tue, 07 Jun 2022 19:23:32 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 304
+[Tue, 07 Jun 2022 19:23:32 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_node/node1@127.0.0.1/_config 304
+[Tue, 07 Jun 2022 19:23:33 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs 200
+[Tue, 07 Jun 2022 19:23:33 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?include_docs=true&limit=100 200
+[Tue, 07 Jun 2022 19:23:34 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 304
+[Tue, 07 Jun 2022 19:23:34 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_node/node1@127.0.0.1/_config 304
+[Tue, 07 Jun 2022 19:28:16 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_active_tasks 304
+[Tue, 07 Jun 2022 19:28:16 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1654629771275 200
+[Tue, 07 Jun 2022 19:28:16 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1654629771276 200
+[Tue, 07 Jun 2022 19:28:16 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1654629771277 200
+[Tue, 07 Jun 2022 19:28:17 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?startkey=%22_design%2F%22&endkey=%22_design0%22&include_docs=true&limit=501 200
+[Tue, 07 Jun 2022 19:28:17 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?limit=21&include_docs=true 200
+[Tue, 07 Jun 2022 19:28:17 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?startkey=%22%22&endkey=%22%E9%A6%99%22&limit=30&_=1654629771278 200
+[Tue, 07 Jun 2022 19:28:18 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1654629771279 200
+[Tue, 07 Jun 2022 19:28:18 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1654629771281 200
+[Tue, 07 Jun 2022 19:28:18 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1654629771280 200
+[Tue, 07 Jun 2022 19:28:19 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users/_all_docs?startkey=%22_design%2F%22&endkey=%22_design0%22&include_docs=true&limit=501 200
+[Tue, 07 Jun 2022 19:28:19 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users/_all_docs?limit=21&include_docs=true 200
+[Tue, 07 Jun 2022 19:28:19 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users/_all_docs?startkey=%22%22&endkey=%22%E9%A6%99%22&limit=30&_=1654629771282 200
+[Tue, 07 Jun 2022 19:28:20 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs?_=1654629771283 200
+[Tue, 07 Jun 2022 19:28:20 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator?_=1654629771284 200
+[Tue, 07 Jun 2022 19:28:20 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_users?_=1654629771285 200
+[Tue, 07 Jun 2022 19:28:21 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_active_tasks 304
+[Tue, 07 Jun 2022 19:28:22 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 304
+[Tue, 07 Jun 2022 19:28:22 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_node/node1@127.0.0.1/_config 304
+[Tue, 07 Jun 2022 19:28:23 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_all_dbs 304
+[Tue, 07 Jun 2022 19:28:23 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_replicator/_all_docs?include_docs=true&limit=100 304
+[Tue, 07 Jun 2022 19:28:25 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 304
+[Tue, 07 Jun 2022 19:28:25 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 304
+[Tue, 07 Jun 2022 19:28:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 304
+[Tue, 07 Jun 2022 19:28:26 GMT] [info] [<0.000.0>] 127.0.0.1 - - GET /_membership 304
+[Tue, 07 Jun 2022 19:30:52 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:5984/
+[Tue, 07 Jun 2022 19:30:52 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:5984/_utils for the Fauxton UI.
+[Tue, 07 Jun 2022 19:31:11 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:5984/
+[Tue, 07 Jun 2022 19:31:11 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:5984/_utils for the Fauxton UI.
+[Tue, 07 Jun 2022 19:32:56 GMT] [info] [<0.000.0>] pouchdb-server has started on http://127.0.0.1:5984/
+[Tue, 07 Jun 2022 19:32:56 GMT] [info] [<0.000.0>] navigate to http://127.0.0.1:5984/_utils for the Fauxton UI.
