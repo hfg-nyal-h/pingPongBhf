@@ -37,6 +37,8 @@ function onConnectionLost(response) {
 // called when a message arrives
 function onMessageArrived(message) {
     // console.log('I got a message:' + message.payloadString);
+
+
     //Hier werden Slave koordinaten verarbeitet.
     let values = JSON.parse(message.payloadString);
     p1.move(values.average)

@@ -23,6 +23,7 @@ function backdrop() {
     textAlign(RIGHT, TOP);
     text(p1.score, width / 2 - textOffsetX, textOffsetY);
 
+    fill(0, 102, 153)
     textAlign(LEFT);
     text(p2.score, width / 2 + textOffsetX, textOffsetY);
 
