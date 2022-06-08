@@ -82,12 +82,7 @@ function movePaddles() {
     }
     p2.move(width - Average - height / 6 / 2);
 }
-function start(){
-    if (waveCounter === 5) {
-        go = true;
-    }
-    console.log(waveCounter)
-}
+
 function keyTyped() {
    
     if (key == " ") {
@@ -109,7 +104,6 @@ function keyTyped() {
 
 
 // Hide the video element, and just show the canvas
-video.hide();
 function posenet5() {
     video = createCapture(VIDEO);
 // hand detection 
@@ -121,13 +115,14 @@ function posenet5() {
         if( wave === undefined ){
             wave = results[0].boundingBox.bottomRight[0]
           }
-          if(results[0].boundingBox.bottomRight[0]+100 < wave || results[0].boundingBox.bottomRight[0]-100 > waveCounter){
-            waveCounter= winkecounter + 1
+          // count the waves
+          if(results[0].boundingBox.bottomRight[0]+100 < wave || results[0].boundingBox.bottomRight[0]-100 > wave){
+            waveCounter= waveCounter + 1
             wave = results[0].boundingBox.bottomRight[0]
+            console.log(waveCounter)
          }
         
       }
-
     });
 
 
