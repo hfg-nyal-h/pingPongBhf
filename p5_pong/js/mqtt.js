@@ -41,8 +41,8 @@ function onMessageArrived(message) {
     let values = JSON.parse(message.payloadString);
     p1.move(values.average)
     console.log(values)
-    ball.pos.x = values.ballPositionX;
-    ball.pos.y = values.ballPositionY;
+    ball.pos.x = width - values.ballPositionX;
+    ball.pos.y = height - values.ballPositionY;
 }
 
 // called when you want to send a message:
