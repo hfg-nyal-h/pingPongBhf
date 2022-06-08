@@ -40,8 +40,9 @@ function onMessageArrived(message) {
     //Hier werden Slave koordinaten verarbeitet.
     let values = JSON.parse(message.payloadString);
     p1.move(values.average)
-    ball.x = values.ballPositionX;
-    ball.y = values.ballPositionY;
+    console.log(values)
+    ball.pos.x = values.ballPositionX;
+    ball.pos.y = values.ballPositionY;
 }
 
 // called when you want to send a message:
