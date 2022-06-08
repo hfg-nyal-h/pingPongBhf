@@ -4,8 +4,13 @@ let video;
 let poseNet;
 let poses = [];
 let Average;
+let handpose;
+let predictions = [];
+let wave = undefined
+let waveCounter = 0
 //TODO lastavare without a funciton
 let lastAverage;
+
 
 function preload() {
     retroFont = loadFont("ARCADECLASSIC.TTF");
@@ -18,6 +23,7 @@ function setup() {
     p2 = new Paddle(width / 2 - 50, height - 20, height / 6, 10);
     posenet5();
 
+    
     // Create an MQTT client:
     client = new Paho.MQTT.Client(
         broker.hostname,
@@ -42,10 +48,10 @@ function draw() {
     movePaddles();
     pop();
     backdrop();
+    drawKeypoints();
 
     p1.show();
     p2.show();
-
     let oob = ball.outOfBounds();
     if (oob) {
         // the ball stays at spawn till go = true
@@ -76,8 +82,14 @@ function movePaddles() {
     }
     p2.move(width - Average - height / 6 / 2);
 }
-
+function start(){
+    if (waveCounter === 5) {
+        go = true;
+    }
+    console.log(waveCounter)
+}
 function keyTyped() {
+   
     if (key == " ") {
         go = true;
     }
@@ -93,18 +105,31 @@ function keyTyped() {
     return false;
 }
 
-// Copyright (c) 2018 ml5
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
 
-/* ===
-ml5 Example
-PoseNet example using p5.js
-=== */
 
+
+// Hide the video element, and just show the canvas
+video.hide();
 function posenet5() {
     video = createCapture(VIDEO);
+// hand detection 
+    handpose = ml5.handpose(video, modelReady);
+    handpose.on("predict", results => {
+      predictions = results;
+      if (results.length != 0){
+        // Recognize hand waves
+        if( wave === undefined ){
+            wave = results[0].boundingBox.bottomRight[0]
+          }
+          if(results[0].boundingBox.bottomRight[0]+100 < wave || results[0].boundingBox.bottomRight[0]-100 > waveCounter){
+            waveCounter= winkecounter + 1
+            wave = results[0].boundingBox.bottomRight[0]
+         }
+        
+      }
+
+    });
+
 
     // Create a new poseNet method with a single detection
     poseNet = ml5.poseNet(video, modelReady);
@@ -127,6 +152,21 @@ function posenet5() {
     video.hide();
 }
 
+
+
 function modelReady() {
-    console.log("model loaded")
+  console.log("Model ready!");
+}
+
+// A function to draw ellipses over the detected keypoints
+function drawKeypoints() {
+  for (let i = 0; i < predictions.length; i += 1) {
+    const prediction = predictions[i];
+    for (let j = 0; j < prediction.landmarks.length; j += 1) {
+      const keypoint = prediction.landmarks[j];
+      fill(0, 255, 0);
+      noStroke();
+      ellipse(keypoint[0], keypoint[1], 10, 10);
+    }
+  }
 }
