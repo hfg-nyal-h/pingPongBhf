@@ -4,7 +4,8 @@ let video;
 let poseNet;
 let poses = [];
 let Average;
-//TODO lastavare without a funciton
+let msgAverage
+    //TODO lastavare without a funciton
 let lastAverage;
 
 function preload() {
@@ -65,16 +66,8 @@ function draw() {
 }
 
 function movePaddles() {
-    // asci II code
-    // 65 = 'a'
-    if (keyIsDown(65)) {
-        p1.move(-5);
-    }
-    // 68 = 'd'
-    if (keyIsDown(68)) {
-        p1.move(5);
-    }
-    p2.move(width - Average - height / 6 / 2);
+    // Hier wird die Position des Paddles angepasst, und zentral auf die Körpermitte platziert.
+    p2.move(Average);
 }
 
 function keyTyped() {
@@ -117,8 +110,14 @@ function posenet5() {
                 (poses[0].pose.keypoints[5].position.x +
                     poses[0].pose.keypoints[6].position.x) /
                 2;
+
+            msgAverage = Average - height / 6 / 2; //FOr remote cumpert, position mirrored
+            Average = width - Average - height / 6 / 2; //For own machine
+
+
             lastAverage = Average;
-            mqttMsg = { average: Average, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
+
+            mqttMsg = { average: msgAverage, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
             sendMqttMessage(mqttMsg);
         }
     });
