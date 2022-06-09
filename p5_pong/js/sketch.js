@@ -1,5 +1,6 @@
 let ball, p1, p2, retroFont;
 let go = false;
+let isGameRunning = false;
 let video;
 let poseNet;
 let poses = [];
@@ -49,6 +50,7 @@ function draw() {
     pop();
     backdrop();
     drawKeypoints();
+    gameStatus();
 
     p1.show();
     p2.show();
@@ -58,8 +60,10 @@ function draw() {
         go = false;
         if (oob == "right") {
             p1.score++;
+          //  console.log(p1.score + "score");
         } else {
             p2.score++;
+           // console.log(p2.score + "score");
         }
     }
 
@@ -100,6 +104,23 @@ function keyTyped() {
     return false;
 }
 
+function gameStatus (){
+    if (isGameRunning && !go){
+       // console.log("not active")
+        //verweilzeit
+        go = true;
+    } else if (p1.score == 3) {
+      //  console.log("p1 wins");
+        isGameRunning = false;
+        go = false;
+    } else if (p2.score == 3) {
+        //console.log("p2 wins");
+        isGameRunning = false;
+        go = false;
+    }
+    };
+
+
 
 
 
@@ -119,9 +140,16 @@ function posenet5() {
           if(results[0].boundingBox.bottomRight[0]+100 < wave || results[0].boundingBox.bottomRight[0]-100 > wave){
             waveCounter= waveCounter + 1
             wave = results[0].boundingBox.bottomRight[0]
-            console.log(waveCounter)
+            console.log(waveCounter);
+            if(waveCounter > 3){ // && isGameRunning = false;
+                go = true;
+                isGameRunning = true;
+                waveCounter = 0;
+            } else if (isGameRunning == true){
+                console.log("game is running, can't detect wave");
+            }
+            
          }
-        
       }
     });
 
