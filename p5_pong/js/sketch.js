@@ -117,9 +117,10 @@ function posenet5() {
                 (poses[0].pose.keypoints[5].position.x +
                     poses[0].pose.keypoints[6].position.x) /
                 2;
-            lastAverage = Average;
-            mqttMsg = { average: Average, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
-            sendMqttMessage(mqttMsg);
+                let msgAverage = Average-(height/6/2)
+                lastAverage = Average;
+                mqttMsg = { average: msgAverage, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
+                sendMqttMessage(mqttMsg);
         }
     });
     // Hide the video element, and just show the canvas
