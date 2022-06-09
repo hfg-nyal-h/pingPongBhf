@@ -136,8 +136,21 @@ function posenethand () {
     // with an array every time new hand poses are detected
     handpose.on("predict", results2 => {
       predictions = results2;
+    
+
+    if (results2.length != 0){
+        // Recognize hand waves
+        if( wave === undefined ){
+            wave = results2[0].boundingBox.bottomRight[0]
+          }
+          if(results2[0].boundingBox.bottomRight[0]+100 < wave || results2[0].boundingBox.bottomRight[0]-100 > wave){
+            waveCounter= waveCounter + 1
+            wave = results2[0].boundingBox.bottomRight[0]
+            console.log(waveCounter)
+         }
+
+      }
     });
-  
     // Hide the video element, and just show the canvas
     video2.hide();
 }
