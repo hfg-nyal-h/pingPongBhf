@@ -18,12 +18,13 @@ function backdrop() {
     textFont(retroFont);
     textSize(100);
     noStroke();
-    fill(80);
+    fill(0, 102, 153);
 
     textAlign(RIGHT, TOP);
-    text(p1.score, width / 2 - textOffsetX, textOffsetY);
+    text(p2.score, width / 2 - textOffsetX, textOffsetY,);
+    fill(80);
 
     textAlign(LEFT);
-    text(p2.score, width / 2 + textOffsetX, textOffsetY);
+    text(p1.score, width / 2 + textOffsetX, textOffsetY);
 
 }
