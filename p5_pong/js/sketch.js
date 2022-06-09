@@ -9,7 +9,7 @@ let handpose;
 let predictions = [];
 let wave = undefined
 let waveCounter = 0
-//TODO lastavare without a funciton
+    //TODO lastavare without a funciton
 let lastAverage;
 
 
@@ -25,7 +25,7 @@ function setup() {
     posenet5();
     posenethand();
 
-    
+
     // Create an MQTT client:
     client = new Paho.MQTT.Client(
         broker.hostname,
@@ -50,7 +50,7 @@ function draw() {
     movePaddles();
     pop();
     backdrop();
-    drawKeypoints();
+    //drawKeypoints();
     gameStatus();
 
     p1.show();
@@ -61,10 +61,10 @@ function draw() {
         go = false;
         if (oob == "right") {
             p1.score++;
-          //  console.log(p1.score + "score");
+            //  console.log(p1.score + "score");
         } else {
             p2.score++;
-           // console.log(p2.score + "score");
+            // console.log(p2.score + "score");
         }
     }
 
@@ -90,7 +90,7 @@ function movePaddles() {
 
 
 function keyTyped() {
-   
+
     if (key == " ") {
         go = true;
     }
@@ -106,18 +106,17 @@ function keyTyped() {
     return false;
 }
 
-function gameStatus (){
-    if (isGameRunning && !go){
-       // console.log("not active")
+function gameStatus() {
+    if (isGameRunning && !go) {
+        // console.log("not active")
         //verweilzeit
 
-        setTimeout(function(){
+        setTimeout(function() {
             go = true;
-        }
-        , 3000);
+        }, 3000);
 
     } else if (p1.score == 3) {
-      //  console.log("p1 wins");
+        //  console.log("p1 wins");
         isGameRunning = false;
         go = false;
     } else if (p2.score == 3) {
@@ -125,7 +124,7 @@ function gameStatus (){
         isGameRunning = false;
         go = false;
     }
-    };
+};
 
 // Hide the video element, and just show the canvas
 function posenet5() {
@@ -145,11 +144,11 @@ function posenet5() {
                 (poses[0].pose.keypoints[5].position.x +
                     poses[0].pose.keypoints[6].position.x) /
                 2;
-                let msgAverage = Average-(height/6/2)
+            let msgAverage = Average - (height / 6 / 2)
 
-                lastAverage = Average;
-                mqttMsg = { average: msgAverage, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
-                sendMqttMessage(mqttMsg);
+            lastAverage = Average;
+            mqttMsg = { average: msgAverage, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
+            sendMqttMessage(mqttMsg);
 
         }
     });
@@ -157,62 +156,61 @@ function posenet5() {
     video.hide();
 }
 
- 
-function posenethand () {
+
+function posenethand()  {
     //createCanvas(640, 480);
     video2 = createCapture(VIDEO);
     video2.size(width, height);
-  
+
     handpose = ml5.handpose(video2, modelReady);
-  
+
     // This sets up an event that fills the global variable "predictions"
     // with an array every time new hand poses are detected
     handpose.on("predict", results2 => {
-      predictions = results2;
-    
+        predictions = results2;
 
-    if (results2.length != 0){
-        // Recognize hand waves
-        if( wave === undefined ){
-            wave = results2[0].boundingBox.bottomRight[0]
-          }
-          if (results2[0].boundingBox.bottomRight[0]+100 < wave || results2[0].boundingBox.bottomRight[0]-100 > wave){
-            waveCounter= waveCounter + 1
-            wave = results2[0].boundingBox.bottomRight[0]
-            console.log(waveCounter)
 
-            console.log(waveCounter);
-            if(waveCounter > 3){ // && isGameRunning = false;
-                go = true;
-                isGameRunning = true;
-                waveCounter = 0;
-            } else if (isGameRunning == true){
-                console.log("game is running, can't detect wave");
+        if (results2.length != 0) {
+            // Recognize hand waves
+            if (wave === undefined) {
+                wave = results2[0].boundingBox.bottomRight[0]
             }
-         }
+            if (results2[0].boundingBox.bottomRight[0] + 100 < wave || results2[0].boundingBox.bottomRight[0] - 100 > wave) {
+                waveCounter = waveCounter + 1
+                wave = results2[0].boundingBox.bottomRight[0]
+                console.log(waveCounter)
 
-      }
+                console.log(waveCounter);
+                if (waveCounter > 3) { // && isGameRunning = false;
+                    go = true;
+                    isGameRunning = true;
+                    waveCounter = 0;
+                } else if (isGameRunning == true) {
+                    console.log("game is running, can't detect wave");
+                }
+            }
+
+        }
     });
     // Hide the video element, and just show the canvas
     video2.hide();
 }
- 
+
 function modelReady() {
     console.log("model loaded")
-    
-}
-
-// A function to draw ellipses over the detected keypoints
-function drawKeypoints() {
-  for (let i = 0; i < predictions.length; i += 1) {
-    const prediction = predictions[i];
-    for (let j = 0; j < prediction.landmarks.length; j += 1) {
-      const keypoint = prediction.landmarks[j];
-      fill(0, 255, 0);
-      noStroke();
-      ellipse(keypoint[0], keypoint[1], 10, 10);
-    }
-  }
 
 }
 
+// // A function to draw ellipses over the detected keypoints
+// function drawKeypoints() {
+//   for (let i = 0; i < predictions.length; i += 1) {
+//     const prediction = predictions[i];
+//     for (let j = 0; j < prediction.landmarks.length; j += 1) {
+//       const keypoint = prediction.landmarks[j];
+//       fill(0, 255, 0);
+//       noStroke();
+//       ellipse(keypoint[0], keypoint[1], 10, 10);
+//     }
+//   }
+
+// }
