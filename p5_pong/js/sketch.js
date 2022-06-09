@@ -23,6 +23,7 @@ function setup() {
     p1 = new Paddle(width / 2 - 50, 20, height / 6, 10); //height / 6
     p2 = new Paddle(width / 2 - 50, height - 20, height / 6, 10);
     posenet5();
+    posenethand();
 
     
     // Create an MQTT client:
@@ -87,6 +88,7 @@ function movePaddles() {
     p2.move(width - Average - height / 6 / 2);
 }
 
+
 function keyTyped() {
    
     if (key == " ") {
@@ -108,7 +110,12 @@ function gameStatus (){
     if (isGameRunning && !go){
        // console.log("not active")
         //verweilzeit
-        go = true;
+
+        setTimeout(function(){
+            go = true;
+        }
+        , 3000);
+
     } else if (p1.score == 3) {
       //  console.log("p1 wins");
         isGameRunning = false;
@@ -120,38 +127,11 @@ function gameStatus (){
     }
     };
 
-
-
-
-
 // Hide the video element, and just show the canvas
 function posenet5() {
     video = createCapture(VIDEO);
-// hand detection 
-    handpose = ml5.handpose(video, modelReady);
-    handpose.on("predict", results => {
-      predictions = results;
-      if (results.length != 0){
-        // Recognize hand waves
-        if( wave === undefined ){
-            wave = results[0].boundingBox.bottomRight[0]
-          }
-          // count the waves
-          if(results[0].boundingBox.bottomRight[0]+100 < wave || results[0].boundingBox.bottomRight[0]-100 > wave){
-            waveCounter= waveCounter + 1
-            wave = results[0].boundingBox.bottomRight[0]
-            console.log(waveCounter);
-            if(waveCounter > 3){ // && isGameRunning = false;
-                go = true;
-                isGameRunning = true;
-                waveCounter = 0;
-            } else if (isGameRunning == true){
-                console.log("game is running, can't detect wave");
-            }
-            
-         }
-      }
-    });
+
+    ////POSE DETECTION
 
 
     // Create a new poseNet method with a single detection
@@ -166,19 +146,60 @@ function posenet5() {
                     poses[0].pose.keypoints[6].position.x) /
                 2;
                 let msgAverage = Average-(height/6/2)
-            lastAverage = Average;
-            mqttMsg = { average: msgAverage, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
-            sendMqttMessage(mqttMsg);
+
+                lastAverage = Average;
+                mqttMsg = { average: msgAverage, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
+                sendMqttMessage(mqttMsg);
+
         }
     });
     // Hide the video element, and just show the canvas
     video.hide();
 }
 
+ 
+function posenethand () {
+    //createCanvas(640, 480);
+    video2 = createCapture(VIDEO);
+    video2.size(width, height);
+  
+    handpose = ml5.handpose(video2, modelReady);
+  
+    // This sets up an event that fills the global variable "predictions"
+    // with an array every time new hand poses are detected
+    handpose.on("predict", results2 => {
+      predictions = results2;
+    
 
+    if (results2.length != 0){
+        // Recognize hand waves
+        if( wave === undefined ){
+            wave = results2[0].boundingBox.bottomRight[0]
+          }
+          if (results2[0].boundingBox.bottomRight[0]+100 < wave || results2[0].boundingBox.bottomRight[0]-100 > wave){
+            waveCounter= waveCounter + 1
+            wave = results2[0].boundingBox.bottomRight[0]
+            console.log(waveCounter)
 
+            console.log(waveCounter);
+            if(waveCounter > 3){ // && isGameRunning = false;
+                go = true;
+                isGameRunning = true;
+                waveCounter = 0;
+            } else if (isGameRunning == true){
+                console.log("game is running, can't detect wave");
+            }
+         }
+
+      }
+    });
+    // Hide the video element, and just show the canvas
+    video2.hide();
+}
+ 
 function modelReady() {
-  console.log("Model ready!");
+    console.log("model loaded")
+    
 }
 
 // A function to draw ellipses over the detected keypoints
@@ -192,4 +213,6 @@ function drawKeypoints() {
       ellipse(keypoint[0], keypoint[1], 10, 10);
     }
   }
+
 }
+

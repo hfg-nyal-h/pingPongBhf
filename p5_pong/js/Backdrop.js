@@ -19,6 +19,7 @@ function backdrop() {
     textSize(100);
     noStroke();
     fill(0, 102, 153);
+
     textAlign(RIGHT, TOP);
     text(p2.score, width / 2 - textOffsetX, textOffsetY,);
     fill(80);
