@@ -106,7 +106,10 @@ function gameStatus (){
     if (isGameRunning && !go){
        // console.log("not active")
         //verweilzeit
-        go = true;
+        setTimeout(function(){
+            go = true;
+        }
+        , 3000);
     } else if (p1.score == 3) {
       //  console.log("p1 wins");
         isGameRunning = false;
