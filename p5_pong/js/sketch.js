@@ -12,6 +12,7 @@ let waveCounter = 0
 //TODO lastavare without a funciton
 let lastAverage;
 
+
 function preload() {
     retroFont = loadFont("ARCADECLASSIC.TTF");
 }
@@ -24,6 +25,7 @@ function setup() {
     posenet5();
     posenethand();
 
+    
     // Create an MQTT client:
     client = new Paho.MQTT.Client(
         broker.hostname,
@@ -53,15 +55,16 @@ function draw() {
 
     p1.show();
     p2.show();
-
     let oob = ball.outOfBounds();
     if (oob) {
         // the ball stays at spawn till go = true
         go = false;
         if (oob == "right") {
             p1.score++;
+          //  console.log(p1.score + "score");
         } else {
             p2.score++;
+           // console.log(p2.score + "score");
         }
     }
 
@@ -87,6 +90,7 @@ function movePaddles() {
 
 
 function keyTyped() {
+   
     if (key == " ") {
         go = true;
     }
@@ -106,10 +110,12 @@ function gameStatus (){
     if (isGameRunning && !go){
        // console.log("not active")
         //verweilzeit
+
         setTimeout(function(){
             go = true;
         }
         , 3000);
+
     } else if (p1.score == 3) {
       //  console.log("p1 wins");
         isGameRunning = false;
@@ -121,9 +127,12 @@ function gameStatus (){
     }
     };
 
+// Hide the video element, and just show the canvas
 function posenet5() {
     video = createCapture(VIDEO);
+
     ////POSE DETECTION
+
 
     // Create a new poseNet method with a single detection
     poseNet = ml5.poseNet(video, modelReady);
@@ -137,14 +146,17 @@ function posenet5() {
                     poses[0].pose.keypoints[6].position.x) /
                 2;
                 let msgAverage = Average-(height/6/2)
+
                 lastAverage = Average;
                 mqttMsg = { average: msgAverage, ballPositionX: ball.pos.x, ballPositionY: ball.pos.y };
                 sendMqttMessage(mqttMsg);
+
         }
     });
     // Hide the video element, and just show the canvas
     video.hide();
 }
+
  
 function posenethand () {
     //createCanvas(640, 480);
@@ -190,7 +202,6 @@ function modelReady() {
     
 }
 
-
 // A function to draw ellipses over the detected keypoints
 function drawKeypoints() {
   for (let i = 0; i < predictions.length; i += 1) {
@@ -202,4 +213,6 @@ function drawKeypoints() {
       ellipse(keypoint[0], keypoint[1], 10, 10);
     }
   }
+
 }
+
